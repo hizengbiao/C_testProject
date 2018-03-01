@@ -163,7 +163,7 @@ void del_test1(FILE *fp){
 //	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", no,name, age, sizeof(test));
 //}
 
-void main(){
+void main1(){
 	FILE *fp;
 	fp = fopen("D:\\a.txt", "rb+");
 	if (fp == NULL){
