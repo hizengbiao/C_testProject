@@ -111,6 +111,27 @@ struct test{
 	char *name;
 	int age;
 };
+
+void readd(FILE *fp){
+	fflush(fp);
+	rewind(fp);
+	test t2;
+	fread(&t2, sizeof(test), 1, fp);
+	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t2.no, t2.name, t2.age, sizeof(test));
+}
+
+void writee(FILE *fp){
+	test t1;
+	//printf("%d\n",sizeof(test));
+	/*printf("please input the no and the age:\t");
+	scanf("%d%d", &t1.no, &t1.age);*/
+	t1.name = "zengbiao11213123122113332zengbiao11213123122113332";
+	t1.no = 1;
+	t1.age = 21;
+	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t1.no, t1.name, t1.age, sizeof(test));
+	fwrite(&t1, sizeof(test), 1, fp);
+}
+
 void main(){
 	FILE *fp;
 	fp = fopen("D:\\a.txt", "wb+");
@@ -118,18 +139,9 @@ void main(){
 		printf("the file can not be opened.");
 		return;
 	}
-	test t1;
-	//printf("%d\n",sizeof(test));
-	/*printf("please input the no and the age:\t");
-	scanf("%d%d", &t1.no, &t1.age);*/
-	t1.name = "zengbiao";
-	t1.no = 1;
-	t1.age = 21;
-	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t1.no, t1.name,t1.age,sizeof(test));
-	//fwrite(&t1, sizeof(test), 1, fp);
-	//fflush(fp);
-	test t2;
-	fread(&t2, sizeof(test), 1, fp);
-	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t2.no, t2.name, t2.age, sizeof(test));
+	
+	writee(fp);
+	readd(fp);
+	
 	fclose(fp);
 }
