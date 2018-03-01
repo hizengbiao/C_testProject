@@ -105,31 +105,75 @@
 //}
 
 #include<stdio.h>
-
+#include<string.h>	//strcpy用到
+#include<stdlib.h>	//	malloc用到
+//#include "windows.h"	//exit(0);
 struct test{
 	int no;
-	char *name;
+	char name[15];
 	int age;
 };
-void main(){
+
+void readd(FILE *fp){
+	fflush(fp);
+	rewind(fp);
+	test t2;
+	fread(&t2, sizeof(test), 1, fp);
+	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t2.no, t2.name, t2.age, sizeof(test));
+}
+
+void writee(FILE *fp){
+	test t1;
+
+	//printf("%d\n",sizeof(test));
+	/*printf("please input the no , name and the age:\t");
+	char *tem="";
+	scanf("%d%s%d", &t1.no,tem, &t1.age);*/
+	//t1.name = "zengbiao";
+	strcpy(t1.name, "zengbiao");
+	t1.no = 1;
+	t1.age = 21;
+	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t1.no, t1.name, t1.age, sizeof(test));
+	fwrite(&t1, sizeof(test), 1, fp);
+}
+
+void del_test1(FILE *fp){
+	test t1;
+
+	
+	printf("please input the no , name and the age:\t");
+	scanf("%d%s%d", &t1.no,t1.name, &t1.age);
+	//t1.name = "zengbiao";
+	//strcpy(t1.name, "zengbiao");
+	//t1.no = 1;
+	//t1.age = 21;
+	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t1.no, t1.name, t1.age, sizeof(test));
+	fwrite(&t1, sizeof(test), 1, fp);
+}
+
+//void del_test(){
+//	int no;
+//	char name[15];
+//	int age;
+//
+//	printf("please input the no , name and the age:\t");
+//	char *tem = (char*)malloc(15);
+//	scanf("%d%s%d", &no, tem, &age);
+//	strcpy(name, tem);
+//	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", no,name, age, sizeof(test));
+//}
+
+void main1(){
 	FILE *fp;
-	fp = fopen("D:\\a.txt", "wb+");
+	fp = fopen("D:\\a.txt", "rb+");
 	if (fp == NULL){
 		printf("the file can not be opened.");
 		return;
 	}
-	test t1;
-	//printf("%d\n",sizeof(test));
-	/*printf("please input the no and the age:\t");
-	scanf("%d%d", &t1.no, &t1.age);*/
-	t1.name = "zengbiao";
-	t1.no = 1;
-	t1.age = 21;
-	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t1.no, t1.name,t1.age,sizeof(test));
-	//fwrite(&t1, sizeof(test), 1, fp);
-	//fflush(fp);
-	test t2;
-	fread(&t2, sizeof(test), 1, fp);
-	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t2.no, t2.name, t2.age, sizeof(test));
+	//del_test();
+	//del_test1(fp);
+	//writee(fp);
+	readd(fp);
+	
 	fclose(fp);
 }
