@@ -124,11 +124,11 @@ void writee(FILE *fp){
 	test t1;
 
 	//printf("%d\n",sizeof(test));
-	printf("please input the no , name and the age:\t");
+	/*printf("please input the no , name and the age:\t");
 	char *tem="";
-	scanf("%d%s%d", &t1.no,tem, &t1.age);
+	scanf("%d%s%d", &t1.no,tem, &t1.age);*/
 	//t1.name = "zengbiao";
-	strcpy(t1.name, tem);
+	strcpy(t1.name, "zengbiao");
 	t1.no = 1;
 	t1.age = 21;
 	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t1.no, t1.name, t1.age, sizeof(test));
@@ -143,8 +143,8 @@ void main(){
 		return;
 	}
 	
-	writee(fp);
-	//readd(fp);
+	//writee(fp);
+	readd(fp);
 	
 	fclose(fp);
 }
