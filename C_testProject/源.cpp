@@ -105,7 +105,9 @@
 //}
 
 #include<stdio.h>
-#include<string.h>
+#include<string.h>	//strcpy用到
+#include<stdlib.h>	//	malloc用到
+//#include "windows.h"	//exit(0);
 struct test{
 	int no;
 	char name[15];
@@ -135,6 +137,32 @@ void writee(FILE *fp){
 	fwrite(&t1, sizeof(test), 1, fp);
 }
 
+void del_test1(FILE *fp){
+	test t1;
+
+	
+	printf("please input the no , name and the age:\t");
+	scanf("%d%s%d", &t1.no,t1.name, &t1.age);
+	//t1.name = "zengbiao";
+	//strcpy(t1.name, "zengbiao");
+	//t1.no = 1;
+	//t1.age = 21;
+	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", t1.no, t1.name, t1.age, sizeof(test));
+	fwrite(&t1, sizeof(test), 1, fp);
+}
+
+//void del_test(){
+//	int no;
+//	char name[15];
+//	int age;
+//
+//	printf("please input the no , name and the age:\t");
+//	char *tem = (char*)malloc(15);
+//	scanf("%d%s%d", &no, tem, &age);
+//	strcpy(name, tem);
+//	printf("\nthe no is %d\t,the name is %s\t,the age is %d,\tthe size of struct is %d.\n", no,name, age, sizeof(test));
+//}
+
 void main(){
 	FILE *fp;
 	fp = fopen("D:\\a.txt", "rb+");
@@ -142,7 +170,8 @@ void main(){
 		printf("the file can not be opened.");
 		return;
 	}
-	
+	//del_test();
+	//del_test1(fp);
 	//writee(fp);
 	readd(fp);
 	
