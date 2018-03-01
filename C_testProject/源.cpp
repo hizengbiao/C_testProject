@@ -134,13 +134,13 @@ void writee(FILE *fp){
 
 void main(){
 	FILE *fp;
-	fp = fopen("D:\\a.txt", "wb+");
+	fp = fopen("D:\\a.txt", "rb+");
 	if (fp == NULL){
 		printf("the file can not be opened.");
 		return;
 	}
 	
-	writee(fp);
+	//writee(fp);
 	readd(fp);
 	
 	fclose(fp);
