@@ -118,6 +118,7 @@ bool judg(char* ori ,char *dest,int nowHops,int& maxHops){
 }
 
 void deal(){
+	results = (result*)malloc(sizeof(result)*reqNum);
 	for (int i = 0; i < reqNum; i++){
 		//results[i].hops = Max;
 		if (judg(reqs[i].ori, reqs[i].dest,0,reqs[i].hops) == true){
