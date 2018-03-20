@@ -138,7 +138,7 @@ void outPut(FILE *f){
 	}
 }
 
-void main(){
+void main11(){
 	FILE *f1 = fopen("D:\\PathInput.txt", "r");
 	FILE *f2 = fopen("D:\\PathRequest.txt", "r");
 	FILE *f3 = fopen("D:\\Output.txt", "w");
