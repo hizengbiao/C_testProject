@@ -4,8 +4,35 @@
 //第3道  统计篇文章中各英文字母的个数，
 
 #include<stdio.h>
+#include<Windows.h>
+
+#define N 100
 
 int chacter[26];
+
+
+int stack[N];
+int top = -1;
+
+void push(int m){
+	if (top == N){
+		printf("栈已满！");
+		exit(0);
+	}
+	stack[++top] = m;
+}
+
+int pop(){
+	if (top == -1){
+		printf("栈已空！");
+		exit(0);
+	}
+	return stack[--top];
+}
+
+void clearStack(){
+	top = -1;
+}
 
 bool IsSuShu(int m){
 	//int t = sqrt(m*1.0);
@@ -18,17 +45,17 @@ bool IsSuShu(int m){
 	return true;
 }
 
-void ques1(int m){
-	bool sign = false;
-	for (int i = 2; i < m; i++){
+bool resolution(int m){
+	if (m == 0)
+		return true;
+	for (int i = 2; i <= m; i++){
 		if (IsSuShu(i)){
-			int b = m - i;
-			if (IsSuShu(b)){
-				sign = true;
-				printf("%d = %d + %d \n", m, i, b);
-				break;
+			push(i);
+			if (resolution(m - i)){
+				return true;
 			}
 			else{
+				pop();
 				continue;
 			}
 		}
@@ -36,9 +63,26 @@ void ques1(int m){
 			continue;
 		}
 	}
-	if (sign == false){
-		printf("%d不能分解\n",m);
+	return false;
+}
+
+void ques1(int m){
+	clearStack();
+	if (resolution(m)){
+		printf("%d = ",m);
+		for (int i = 0; i <= top; i++){
+			printf("%d ",stack[i]);
+			if (i!=top)
+				printf("+ ");
+			else{
+				printf("\n");
+			}
+		}
 	}
+	else{
+		printf("%d不能分解成若干个质数的和\n",m);
+	}
+	
 }
 
 void ques2(){
@@ -74,15 +118,15 @@ void ques3(char *p){
 
 	fclose(f);
 }
-void main(){
+void main2005(){
 
 	//题目1：
-	for (int i = 50; i < 100;i++)
+	for (int i = 1; i < 100;i++)
 		ques1(i);
 
 
 
 	//题目3：
-	/*char path[] = "d://article.txt";
-	ques3(path);*/
+	char path[] = "d://article.txt";
+	ques3(path);
 }
