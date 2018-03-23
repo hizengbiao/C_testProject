@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="2006.cpp" />
     <ClCompile Include="2007.cpp" />
     <ClCompile Include="2008.cpp" />
     <ClCompile Include="2013_C.cpp" />
