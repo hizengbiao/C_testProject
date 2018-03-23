@@ -82,7 +82,7 @@ void printLetters(char *p){
 	fclose(f);
 }
 
-void main2007(){
+void main2008(){
 	char path1[] = "d://org.dat";
 	char path2[] = "d://new.txt";
 
