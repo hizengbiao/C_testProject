@@ -25,7 +25,7 @@ bool IsInclude9(int m){
 	return false;
 }
 
-void main(){
+void main2006(){
 	char path[] = "d://result.txt";
 	FILE *f = fopen(path, "w");
 	if (f == NULL){
