@@ -26,6 +26,10 @@ bool IsIlleagl(int n){
 
 void pickLetters(char *p){
 	FILE *f = fopen(p, "r");
+	if (f == NULL){
+		printf("\n\nthe file %s can not be opened.\n\n", p);
+		return;
+	}
 	char c;
 	int i = 0;//第i+1个单词
 	int j = 0;//第i+1个单词的第j+1个字母
@@ -65,7 +69,10 @@ void pickLetters(char *p){
 
 void printLetters(char *p){
 	FILE *f = fopen(p, "w");
-
+	if (f == NULL){
+		printf("\n\nthe file %s can not be opened.\n\n", p);
+		return;
+	}
 	for (int i = 0; i < N; i++){
 		letters[i][0] = toupper(letters[i][0]);//将读取的所有单词的首字母转大写
 		//printf("%s\n", letters[i]);
@@ -75,7 +82,7 @@ void printLetters(char *p){
 	fclose(f);
 }
 
-void main(){
+void main2007(){
 	char path1[] = "d://org.dat";
 	char path2[] = "d://new.txt";
 
