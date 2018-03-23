@@ -175,7 +175,7 @@ void question2(char *p, char *p2){
 	q = NULL;
 }
 
-void main(){	
+void main2014(){	
 	char path[] = "d://input.dat";
 	char path2[] = "d://output.txt";
 
