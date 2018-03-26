@@ -112,7 +112,64 @@ void readData(char *p){//读取字符并分割成一个个单词，同时统计每个单词的频度
 	fclose(f);
 }
 
-void sort(){//按单词频度从大到小排序
+void sort2(){
+	//采用指针的方法对链表排序
+
+	//当单个结点的数据特别庞大的时候，如果通过交换结点的数据来交换两个结点的位置，将会把大量的时间浪费在结点数据的移动上，
+	//而采用改变指针指向的方法无论结点的数据有多大，排序的时间都是一样的。
+	struct wordList* p = head;
+	if (head == NULL)
+		return;
+	bool start = true;
+	while (p->next){		
+		if (start==true){
+			start = false;
+			struct wordList* q = head;
+			p = q->next;
+			if (p->times > q->times){
+				q->next = p->next;
+				p->next = q;
+				head = p;
+				q = p;
+			}
+			q = q->next;
+
+			while (q->next){
+				if (q->next->times > head->times){
+					struct wordList* t = q->next;
+					p = head->next;
+					head->next = t->next;
+					t->next = p;
+					q->next = head;					
+					head = t;
+				}
+				q = q->next;
+			}
+			p = head;
+		}
+		else{
+			struct wordList* q = p->next;
+			while (q->next){
+				if (q->next->times > p->next->times){
+					struct wordList* t = q->next;
+					q->next = p->next;
+					p->next = t;
+					struct wordList* t2 = t->next;
+					t->next = q->next->next;
+					q->next->next = t2;
+				}
+				q = q->next;
+			}
+			p = p->next;
+		}
+		
+	}
+
+}
+
+void sort1(){//按单词频度从大到小排序
+	//采用交换结点数据的方法来对链表排序
+	//本题结点的数据只有word和times两个，规模较小，可以采用此方法
 	struct wordList* p = head;
 	
 	//选择排序：
@@ -134,6 +191,7 @@ void sort(){//按单词频度从大到小排序
 		p = p->next;
 	}
 }
+
 void printData(char *path2){
 	FILE *f = fopen(path2, "w");
 	if (f == NULL){
@@ -151,10 +209,10 @@ void printData(char *path2){
 		p = p->next;
 	}
 }
-void main2016(){
+void main(){
 	char path[] = "d://input.txt";
 	char path2[] = "d://output.txt";
 	readData(path);//读取字符并分割成一个个单词，同时统计每个单词的频度
-	sort();//按单词频度从大到小排序
+	sort2();//按单词频度从大到小排序
 	printData(path2);//打印数据
 }
