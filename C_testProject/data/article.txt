@@ -1,7 +1,3 @@
-//从网页上下载input.dat文件，里面是用二进制编写的，里面放了一堆int 型的数，每个数占4个字节，每次读取两个，这两个数构成一个坐标。
-//（1）规定处于第一象限的数是有效点，（即x>0, y>0的坐标），问这么多点中有效点有多少个？
-//（2）现在用户从键盘输入一个坐标和一个数字K，设计算法输出K个离该坐标距离最近的点的坐标和每个坐标到该点的距离，写入到output.txt文件中
-
 #include<stdlib.h>
 #include<stdio.h>
 #include<math.h>
@@ -180,8 +176,8 @@ void question2(char *p, char *p2){
 }
 
 void main2014(){	
-	char path[] = "data//input.dat";
-	char path2[] = "data//output.txt";
+	char path[] = "d://input.dat";
+	char path2[] = "d://output.txt";
 
 	makeData(path);
 	question1(path);

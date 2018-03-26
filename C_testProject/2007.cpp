@@ -27,7 +27,7 @@ int fan(int m){
 	return result;
 }
 void main2007(){
-	char path[] = "d://result.txt";
+	char path[] = "data//result.txt";
 	FILE *f = fopen(path, "w");
 	if (f == NULL){
 		printf("\n\nthe file %s can not be opened.\n\n", path);

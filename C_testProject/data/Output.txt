@@ -1,0 +1,3 @@
+2
+[PVG, DLC, YES]
+[PVG, LXA, NO]
