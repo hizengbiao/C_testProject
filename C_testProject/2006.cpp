@@ -26,7 +26,7 @@ bool IsInclude9(int m){
 }
 
 void main2006(){
-	char path[] = "d://result.txt";
+	char path[] = "data//result.txt";
 	FILE *f = fopen(path, "w");
 	if (f == NULL){
 		printf("\n\nthe file %s can not be opened.\n\n", path);

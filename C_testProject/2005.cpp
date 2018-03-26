@@ -127,6 +127,6 @@ void main2005(){
 
 
 	//ÌâÄ¿3£º
-	char path[] = "d://article.txt";
+	char path[] = "data//article.txt";
 	ques3(path);
 }

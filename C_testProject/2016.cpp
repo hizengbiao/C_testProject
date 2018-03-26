@@ -209,9 +209,9 @@ void printData(char *path2){
 		p = p->next;
 	}
 }
-void main(){
-	char path[] = "d://input.txt";
-	char path2[] = "d://output.txt";
+void main2016(){
+	char path[] = "data//input.txt";
+	char path2[] = "data//output.txt";
 	readData(path);//读取字符并分割成一个个单词，同时统计每个单词的频度
 	sort2();//按单词频度从大到小排序
 	printData(path2);//打印数据
